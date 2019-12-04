@@ -219,7 +219,7 @@ class HomeController extends Controller
                 M('user')->where(array('id' => $user_id))->save(array("money" => array('exp', 'money+' . $this->_site['send_money'])));
                 flog($user_id, "money", $this->_site['send_money'], 13);
                 $dd = new \Common\Util\ddwechat();
-                $dd->setParam($this->_mp);
+//                $dd->setParam($this->_mp);
                 $html = "尊敬的" . $shuser['nickname'] . "，您分享的漫画小说被用户" . $this->user['nickname'] . '阅读观看了，恭喜您获得' . $this->_site['send_money'] . '元书币奖励，分享更多内容可获得更多奖励哦！';
                 $dd->send_msg($shuser['openid'], $html);
             }

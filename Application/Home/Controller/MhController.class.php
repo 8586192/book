@@ -422,7 +422,7 @@ class MhController extends HomeController
         $this->assign($asdata);
 
         $dd = new \Common\Util\ddwechat();
-        $dd->setParam($this->_mp);
+//        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
 
@@ -563,7 +563,7 @@ class MhController extends HomeController
 
 
         $dd = new \Common\Util\ddwechat();
-        $dd->setParam($this->_mp);
+//        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
 
@@ -889,7 +889,7 @@ class MhController extends HomeController
         $user_id = $this->user['id'];
         $shuser  = M('user')->find(intval($user_id));
         $dd      = new \Common\Util\ddwechat;
-        $dd->setParam($this->_mp);
+//        $dd->setParam($this->_mp);
         $url  = U('Mh/pay');
         $url  = complete_url($url);
         $html = "尊敬的" . $shuser['nickname'] . "，您有订单未支付，请尽快支付" . '<a href="' . $url . '">【点击充值】</a>';

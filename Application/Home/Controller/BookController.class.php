@@ -104,7 +104,7 @@ class BookController extends HomeController
         $this->assign($asdata);
 
         $dd = new \Common\Util\ddwechat();
-        $dd->setParam($this->_mp);
+//        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
 
@@ -224,7 +224,7 @@ class BookController extends HomeController
 
 
         $dd = new \Common\Util\ddwechat();
-        $dd->setParam($this->_mp);
+//        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
 
