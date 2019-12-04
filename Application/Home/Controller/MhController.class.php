@@ -885,7 +885,7 @@ class MhController extends HomeController
 
     public function paySend()
     {
-        //发送客服消息
+        // 发送客服消息
         $user_id = $this->user['id'];
         $shuser  = M('user')->find(intval($user_id));
         $dd      = new \Common\Util\ddwechat;
