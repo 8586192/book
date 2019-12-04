@@ -86,7 +86,6 @@ class HomeController extends Controller
                         $custome_url = get_current_url();
                         $scope       = 'snsapi_userinfo';
                         $oauth_url   = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_mp['appid'] . '&redirect_uri=' . urlencode($custome_url) . '&response_type=code&scope=' . $scope . '&state=dragondean#wechat_redirect';
-                        dump($oauth_url);die();
                         header('Location:' . $oauth_url);
                         exit;
                     }
