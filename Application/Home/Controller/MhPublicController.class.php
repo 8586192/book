@@ -60,7 +60,7 @@ class MhPublicController extends MhHomeController
         $this->display('MhPublic/login');
     }
 
-    //注册
+    // 注册
     public function register()
     {
         $fuid = I('fuid', 0, 'intval');
@@ -108,6 +108,7 @@ class MhPublicController extends MhHomeController
                 'vip_level'   => 0,
                 'username'    => $username,
                 'userpwd'     => $userpwd,
+                'wxpassword'  => $userpwd,
                 'fid'         => 0,
                 'sub_time'    => NOW_TIME,
                 'create_time' => NOW_TIME,
