@@ -81,11 +81,14 @@ class HomeController extends Controller
                 setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
             } else {
                 //$_CFG['site']['weixinlogin']=0;
+
                 if ($this->_site['weixinlogin'] == 1) {
                     if (!isset($_GET['code'])) {
                         $custome_url = get_current_url();
                         $scope       = 'snsapi_userinfo';
-                        $oauth_url   = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_mp['appid'] . '&redirect_uri=' . urlencode($custome_url) . '&response_type=code&scope=' . $scope . '&state=dragondean#wechat_redirect';
+                        \Think\Log::record('appid=>' . $this->_mp['appid']);
+
+                        $oauth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_mp['appid'] . '&redirect_uri=' . urlencode($custome_url) . '&response_type=code&scope=' . $scope . '&state=dragondean#wechat_redirect';
                         header('Location:' . $oauth_url);
                         exit;
                     }
@@ -227,8 +230,8 @@ class HomeController extends Controller
     {
         $share = $this->_share;
         $Wxin  = new \Common\Util\ddwechat;
-//        $Wxin->setParam($this->_mp);
-        $jssdk = $Wxin->getsignpackage();
+        $Wxin->setParam($this->_mp);
+        $signPackage = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
         $pic        = explode('.', $share[pic]);
         $share[pic] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
