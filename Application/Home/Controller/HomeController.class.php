@@ -227,7 +227,7 @@ class HomeController extends Controller
     {
         $share = $this->_share;
         $Wxin  = new \Common\Util\ddwechat;
-        $Wxin->setParam($this->mp);
+//        $Wxin->setParam($this->mp);
         $jssdk = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
         $pic        = explode('.', $share[pic]);
