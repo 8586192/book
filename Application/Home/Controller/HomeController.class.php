@@ -81,7 +81,7 @@ class HomeController extends Controller
                 setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
             } else {
                 //$_CFG['site']['weixinlogin']=0;
-
+                dump($this->user);
                 if ($this->_site['weixinlogin'] == 1) {
                     if (!isset($_GET['code'])) {
                         $custome_url = get_current_url();
