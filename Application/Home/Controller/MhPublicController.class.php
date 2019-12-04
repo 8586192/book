@@ -7,7 +7,7 @@ use Think\Controller;
 class MhPublicController extends MhHomeController
 {
 
-    //登录
+    // 登录
     public function binding()
     {
         if (IS_POST) {
