@@ -111,7 +111,6 @@ class HomeController extends Controller
                                     $user_info = array_merge(array('parent1' => $parent_info['id'], 'parent2' => $parent_info['parent1'], 'parent3' => $parent_info['parent2']), $user_info);
                                 }
                             }
-                            dump($user_info);
                             $user_info['id'] = M('user')->add($user_info);
                             if ($this->chapter) {
                                 M('chapter')->where(array('id' => $this->chapter['id']))->setInc('subscribe', 1);
