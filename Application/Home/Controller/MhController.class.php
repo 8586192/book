@@ -792,11 +792,11 @@ class MhController extends HomeController
             $this->error('充值金额错误！');
         }
         $sn = $this->user['id'] . date('Ymdhis') . rand(10000, 99999);
-        //添加充值订单
+        // 添加充值订单
 
-        //需要减去扣除分成
+        // 需要减去扣除分成
         $separate = session('member.separate') * $money / 100;
-        //$desc = session('member.declv')*$money/100;
+        $desc     = session('member.declv') * $money / 100;
         $separate = $separate - $desc;
         $data     = array(
             'user_id'     => $this->user['id'],
@@ -814,11 +814,11 @@ class MhController extends HomeController
 
         $cid = M('charge')->add($data);
 
-        //添加分成记录
+        // 添加分成记录
         $data['id'] = $cid;
         $this->separate($data);
 
-        //若有第三方公司
+        // 若有第三方公司
         if (session('member')) {
             M('member_separate')->add(array(
                 'date'        => date('Ymd'),
