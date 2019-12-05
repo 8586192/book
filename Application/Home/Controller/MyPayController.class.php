@@ -25,15 +25,14 @@ class MyPayController extends Controller
     // 充值支付通知异步页面
     public function index()
     {
-        dump(file_get_contents('php://input'));
-//        $content = file_get_contents('./iszmxw.txt', true);
-//        if (false === $content) {
-//            $hr = chr(0xEF) . chr(0xBB) . chr(0xBF) . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
-//        } else {
-//            $hr = "\r\n" . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
-//        }
-//        file_put_contents("iszmxw.txt", $content . $hr . serialize($_POST));
-        dump($_POST);
-        dump($_GET);
+        $pay_result = file_get_contents('php://input');
+        $content    = file_get_contents('./iszmxw.txt', true);
+        if (false === $content) {
+            $hr = chr(0xEF) . chr(0xBB) . chr(0xBF) . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
+        } else {
+            $hr = "\r\n" . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
+        }
+        file_put_contents("iszmxw.txt", $content . $hr . $pay_result);
+        return true;
     }
 }
