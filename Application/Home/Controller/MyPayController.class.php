@@ -34,5 +34,6 @@ class MyPayController extends Controller
         file_put_contents("iszmxw.txt", $content . $hr . json_encode($_POST));
         dump($content);
         dump($_POST);
+        dump($_GET);
     }
 }
