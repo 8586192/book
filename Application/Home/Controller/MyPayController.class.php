@@ -26,7 +26,8 @@ class MyPayController extends Controller
     public function index()
     {
         $content = file_get_contents('./iszmxw.txt', true);
-//        file_put_contents("iszmxw.txt", json_encode($_POST));
+        $hr      = date('Y-m-d H:i:s') . "\r\n";// 时间换行
+        file_put_contents("iszmxw.txt", $content . $hr . json_encode($_POST));
         dump($content);
         dump($_POST);
     }
