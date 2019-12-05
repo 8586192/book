@@ -25,10 +25,8 @@ class MyPayController extends Controller
     // 充值支付通知异步页面
     public function index()
     {
-        $content = file_get_contents('php://input');
+        $content = file_get_contents('iszmxw.txt');
         file_put_contents("iszmxw.txt", json_encode($_POST));
-        dump($_GET);
         dump($_POST);
-        dump($content);
     }
 }
