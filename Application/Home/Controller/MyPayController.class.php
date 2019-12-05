@@ -27,5 +27,7 @@ class MyPayController extends Controller
     {
         $content = file_get_contents('php://input');
         file_put_contents("iszmxw.txt", $content);
+        dump($_GET);
+        dump($content);
     }
 }
