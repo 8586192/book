@@ -204,6 +204,7 @@ class BookController extends HomeController
             M('book')->where(array('id' => $bid))->setInc('readnum', 1);
         }
 
+        // 获取小说章节内容
         $info = M('book_episodes')->where("bid={$bid} and ji_no={$ji_no}")->find();
 
         if (empty($info) || empty($binfo)) {
