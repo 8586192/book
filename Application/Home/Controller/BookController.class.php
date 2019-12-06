@@ -112,9 +112,12 @@ class BookController extends HomeController
 
         $this->display();
     }
+    
 
     /**
      * 分集详情
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/6 22:05
      */
     public function inforedit()
     {
