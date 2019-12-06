@@ -207,6 +207,7 @@ class BookController extends HomeController
         // 获取小说章节内容
         $info = M('book_episodes')->where("bid={$bid} and ji_no={$ji_no}")->find();
 
+        // 如果不存在小说数据
         if (empty($info) || empty($binfo)) {
             $this->error('小说数据缺失！', U('Book/bookinfo') . "&bid={$bid}");
         }
