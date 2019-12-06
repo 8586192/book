@@ -524,7 +524,7 @@ class BookController extends HomeController
         }
     }
 
-    //加载漫画或小说的集数
+    // 加载漫画或小说的集数
     public function getJino()
     {
         if (IS_POST) {
