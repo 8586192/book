@@ -5,7 +5,9 @@ namespace Home\Controller;
 use Think\Controller;
 
 /**
- * 漫画控制器
+ * 小说控制器
+ * Class BookController
+ * @package Home\Controller
  */
 class BookController extends HomeController
 {
