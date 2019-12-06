@@ -121,7 +121,6 @@ class BookController extends HomeController
      */
     public function inforedit()
     {
-
         $bid   = I('bid', 'intval', 0);
         $ji_no = I('ji_no', 'intval', 0);
         if (empty($bid) || empty($ji_no)) {
@@ -228,7 +227,6 @@ class BookController extends HomeController
         $this->assign('bid', $bid);
         $this->assign('collect', $collect);
         $this->assign('likes', $likes);
-
 
         $dd = new \Common\Util\ddwechat();
 //        $dd->setParam($this->_mp);
