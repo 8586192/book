@@ -26,14 +26,8 @@ class MyPayController extends Controller
     public function index()
     {
         $pay_result = file_get_contents('php://input');
-        $content    = file_get_contents('./iszmxw.txt', true);
-        if (false === $content) {
-            $hr = chr(0xEF) . chr(0xBB) . chr(0xBF) . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
-        } else {
-            $hr = "\r\n" . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
-        }
         if ($pay_result) {
-            file_put_contents("iszmxw.txt", $content . $hr . $pay_result);
+            IszmxwLog('iszmxw.txt', $pay_result);
             return 'success';
         }
         return 'error';
