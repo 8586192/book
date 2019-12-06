@@ -234,7 +234,6 @@ class BookController extends HomeController
 //        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
-        dump($info);
         $this->display();
     }
 
