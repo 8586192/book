@@ -27,6 +27,7 @@ class MyPayController extends Controller
     {
         $pay_result = file_get_contents('php://input');
         if ($pay_result) {
+            // 打印日志
             IszmxwLog('iszmxw.txt', $pay_result);
             return 'success';
         }
