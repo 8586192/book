@@ -1,21 +1,15 @@
 # book
 **微信小说系统**
 > 一.环境要求：操作系统/win或linux、PHP/5.4x、mysql/5.5x、Apache/2.4.x、开启openssl扩展。
-
 > 二.修改数据库配置文件,路经如下\Application\Common\Conf\db.php
-
 > 三.修改漫画书内容详情图片地址前缀,路经如下\Application\Common\Conf\config.php
-
 > 四.导入数据库文件mysql.sql。
-
-
 > 五.平台默认操作地址以及帐户密码
 ```text
 1.总后台访问地址:http://你的域名/iszmxw.php   默认账号:admin  默认密码:123456
 
 2.代理后台访问地址:http://你的域名/daili.php
 ```
-
 > 六.对接微信公众号:
 ```text
 1.登陆微信公众号-设置-公众号设置-功能设置,填写业务域名、JS接口安全域名、网页授权域名；
