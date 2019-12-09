@@ -294,12 +294,12 @@ class MhController extends HomeController
      */
     public function book_recent_read()
     {
-        $dis = M('read')->field('rid,type')->where(array('user_id' => $this->user['id']))->order('create_time desc')->select();
+        $dis  = M('read')->field('rid,type')->where(array('user_id' => $this->user['id']))->order('create_time desc')->select();
+        $list = [];
         foreach ($dis as $k => $v) {
             $list[] = M('read')->where(array('user_id' => $this->user['id'], 'rid' => $v['rid']))->order('episodes desc')->find();
         }
         $this->assign('list', $list);
-        //dump($list);
         //$this->assign('list' , M('read')->where(array('user_id'=>$this->user['id']))->order('create_time desc')->select());
         $this->display();
     }
