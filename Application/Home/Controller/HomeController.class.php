@@ -2,6 +2,7 @@
 
 namespace Home\Controller;
 
+use Common\Util\ddwechat;
 use Common\Util\tplmsg;
 use Think\Controller;
 use Think\Log;
@@ -217,11 +218,11 @@ class HomeController extends Controller
     private function toshare($id)
     {
         $share = $this->_share;
-        $Wxin  = new \Common\Util\ddwechat;
+        $Wxin  = new ddwechat();
 //        $Wxin->setParam($this->_mp);
         $jssdk = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
-        $pic        = explode('.', $share[pic]);
+        $pic        = explode('.', $share['pic']);
         $share[pic] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
         //print_r($share);
         $this->assign('share', $share);
