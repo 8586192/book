@@ -80,21 +80,12 @@ class BookController extends HomeController
                 !empty($cateid) && $arr_catename[] = get_mh_cate_name($cateid);
             }
         }
-        $first = M('book_episodes')->where("bid={$bid}")->order('ji_no asc')->find();
-
-        $huas    = M('book_episodes')->where(array('bid' => $bid))->count();
+        $first   = M('book_episodes')->where("bid={$bid}")->order('ji_no asc')->find();
         $chapter = M('book_episodes')->field('ji_no,title')->where(array('bid' => $bid))->select();
-        if ($huas > 15) {
-            $huas_num = range(1, 15);
-        } else {
-            $huas_num = range(1, $huas);
-        }
-
-        $asdata = array(
+        $asdata  = array(
             'info'         => $info,
             'arr_catename' => $arr_catename,
             'first'        => $first,
-            'huas'         => $huas_num,
             'chapter'      => $chapter,
             'tag'          => $tag,
             'lock'         => $lock,
@@ -114,7 +105,6 @@ class BookController extends HomeController
 //        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
-
         $this->display();
     }
 
