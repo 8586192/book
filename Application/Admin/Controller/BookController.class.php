@@ -133,7 +133,7 @@ class BookController extends AdminController
                     $str   = iconv('GBK', 'UTF-8', $str);
                     $title = iconv('GBK', 'UTF-8', $title);
                     dump($str);
-                    dump($title);
+                    dump($v);
                     die();
 
                     $ds = array(
