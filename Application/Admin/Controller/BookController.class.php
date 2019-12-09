@@ -122,10 +122,11 @@ class BookController extends AdminController
                 closedir($handle);
                 sort($temp, SORT_NUMERIC);
                 reset($temp);
-                dump($temp);die();
                 foreach ($temp as $v) {
                     $str = file_get_contents($path . $v);
 
+                    dump($temp);
+                    die();
                     $str = "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $str;
 
                     $str = preg_replace('/\n|\r\n/', '</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $str);
