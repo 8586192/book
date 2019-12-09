@@ -277,7 +277,7 @@
 </div>
 <script>
     $(function () {
-        var order = {isset($_GET['order']) ? $_GET['order'] : 'reader'};
+        var order = "{$_GET['order']}" ? "{$_GET['order']}" : "reader";
         $('.bcigy-item').each(function () {
             if ($(this).attr("_order") == order) {
                 $('.bcigy-item').removeClass("bcigy-sel");
