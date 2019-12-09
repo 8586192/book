@@ -224,8 +224,6 @@ class HomeController extends Controller
         $this->assign('jssdk', $jssdk);
         $pic          = explode('.', $share['pic']);
         $share['pic'] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
-        print_r($share);
-        die();
         $this->assign('share', $share);
         return true;
     }
