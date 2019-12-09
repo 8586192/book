@@ -191,7 +191,8 @@ class HomeController extends Controller
         if ($showAds == 1) {
             if ($this->_ads['pic']) {
                 $adsPic = $this->_ads['pic'];
-            } elseif ($this->_ads['url']) {
+            }
+            if ($this->_ads['url']) {
                 $adsPic = $this->_ads['url'];
             }
         }
