@@ -123,19 +123,13 @@ class BookController extends AdminController
                 sort($temp, SORT_NUMERIC);
                 reset($temp);
                 foreach ($temp as $v) {
-                    $str = file_get_contents($path . $v);
-                    if ($str) {
-                        echo $str;
-                        die();
-                    }
-                    $str = "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $str;
-
-                    $str = preg_replace('/\n|\r\n/', '</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $str);
-
+                    $str    = file_get_contents($path . $v);
+                    $str    = "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $str;
+                    $str    = preg_replace('/\n|\r\n/', '</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $str);
                     $before = $i - 1;
                     $next   = $i + 1;
                     $title  = trim(substr($v, 0, -4));
-                    // var_dump(iconv('GBK','UTF-8',$v));
+                    var_dump(iconv('GBK', 'UTF-8', $v));die();
                     $str   = iconv('GBK', 'UTF-8', $str);
                     $title = iconv('GBK', 'UTF-8', $title);
 
