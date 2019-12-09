@@ -196,6 +196,7 @@ class HomeController extends Controller
         }
         dump($adsPic);
         die();
+        // 广告信息
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
         if ($_GET['uid']) {
