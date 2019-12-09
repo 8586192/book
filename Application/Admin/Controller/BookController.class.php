@@ -132,20 +132,17 @@ class BookController extends AdminController
                     // var_dump(iconv('GBK','UTF-8',$v));
                     $str = iconv('GBK', 'UTF-8', $str);
 //                    $title = iconv('GBK', 'UTF-8', $title);
-                    dump($title);
-                    dump($str);
-                    die();
-
+                    // 小说内容添加
                     $ds = array(
-                        "bid"         => $bid,
-                        "title"       => $title,
-                        "ji_no"       => $i,
-                        "info"        => $str,
+                        "bid"         => $bid,   // 小说的id
+                        "title"       => $title, // 章节的标题
+                        "ji_no"       => $i,     // 当前章节的索引
+                        "info"        => $str,   // 小说的内容
                         "like"        => 0,
-                        "before"      => $before,
-                        "next"        => $next,
-                        "money"       => 0,
-                        "create_time" => time(),
+                        "before"      => $before,// 上一章节的索引
+                        "next"        => $next,  // 下一章节的索引
+                        "money"       => 0,      //
+                        "create_time" => time(), // 创建时间
                         "update_time" => 0,
                     );
                     M('book')->where(array('id' => $bid))->save(array('episodes' => $i));
