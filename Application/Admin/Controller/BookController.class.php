@@ -71,8 +71,6 @@ class BookController extends AdminController
                                 //解压完成之后删除
                                 unlink($file);
                                 $_POST['cert'] = $path;
-                                dump($_POST['cert']);
-                                die();
                             } else {
                                 $this->error('解压失败!');
                             }
@@ -82,6 +80,7 @@ class BookController extends AdminController
                     } else {
                         $this->error('上传错误');
                     }
+                    // 通过解压的txt文件路径去处理每章的小说
                     $this->addEpisodes($path, $product_id);
                     $this->success('操作成功！', U('index'));
                     // $this -> success('操作成功！', U('index'));
@@ -112,7 +111,6 @@ class BookController extends AdminController
         ini_set('memory_limit', '-1');
         $temp = array();
         if (is_dir($path)) {
-
             $temp = array();
             if ($handle = opendir($path)) {
                 $i = 1;
@@ -121,6 +119,7 @@ class BookController extends AdminController
                         $temp[] = $fp;
                     }
                 }
+                dump($temp);die();
                 closedir($handle);
                 sort($temp, SORT_NUMERIC);
                 reset($temp);
