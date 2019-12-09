@@ -163,7 +163,7 @@ class HomeController extends Controller
         $this->assign('user', $this->user);
         $this->_data_log();
         $showAds = 0;
-        if ($this->_ads['isopen'] == 1) {
+        if (1 == $this->_ads['isopen']) {
             $jino = I('get.ji_no');
             if ($jino) {
                 if ($this->_ads['chapter']) {
