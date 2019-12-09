@@ -2,7 +2,7 @@
 
 namespace Admin\Controller;
 
-use Think\Controller;
+use Think\Upload;
 
 class BookController extends AdminController
 {
@@ -50,9 +50,7 @@ class BookController extends AdminController
 
                 //若上传了分集压缩包
                 if (!empty($_FILES['cert'])) {
-                    dump($_FILES['cert']);
-                    die();
-                    $upload           = new \Think\Upload();
+                    $upload           = new Upload();
                     $upload->maxSize  = 200 * 1024 * 1024;
                     $upload->exts     = array('zip', 'rar');
                     $upload->rootPath = './Public/xiaoshuo/';
@@ -61,6 +59,8 @@ class BookController extends AdminController
                     $info             = $upload->upload();
                     if ($info) {
                         $info = $info['cert'];
+                        dump($info);
+                        die();
                         // 解压
                         $path = $upload->rootPath . $info['savepath'];
                         $file = $path . $info['savename'];
