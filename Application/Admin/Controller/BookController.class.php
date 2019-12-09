@@ -23,6 +23,7 @@ class BookController extends AdminController
                 $order = $_GET['order'] . ' ' . $type;
             }
         }
+        $this->assign('_GET', $_GET);
         $this->_list('book', $where, $order);
     }
 
