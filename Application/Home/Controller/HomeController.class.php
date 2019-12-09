@@ -164,6 +164,7 @@ class HomeController extends Controller
         $this->_data_log();
         $showAds = 0;
         dump($this->_ads);
+        die();
         if (1 == $this->_ads['isopen']) {
             $jino = I('get.ji_no');
             if ($jino) {
