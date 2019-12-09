@@ -195,6 +195,7 @@ class HomeController extends Controller
             }
         }
         dump($showAds);
+        die();
         dump($adsPic);
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
