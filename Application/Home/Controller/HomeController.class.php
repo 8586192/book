@@ -187,6 +187,7 @@ class HomeController extends Controller
                 }
             }
         }
+        $adsPic = null;
         if ($showAds == 1) {
             if ($this->_ads['pic']) {
                 $adsPic = $this->_ads['pic'];
