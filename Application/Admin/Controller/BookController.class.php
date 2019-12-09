@@ -130,10 +130,10 @@ class BookController extends AdminController
                     $next   = $i + 1;
                     $title  = trim(substr($v, 0, -4));
                     // var_dump(iconv('GBK','UTF-8',$v));
-                    $str   = iconv('GBK', 'UTF-8', $str);
-                    $title = iconv('GBK', 'UTF-8', $title);
+                    $str = iconv('GBK', 'UTF-8', $str);
+//                    $title = iconv('GBK', 'UTF-8', $title);
+                    dump($title);
                     dump($str);
-                    dump($v);
                     die();
 
                     $ds = array(
