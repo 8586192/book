@@ -23,13 +23,14 @@ class BookController extends HomeController
      */
     public function index()
     {
+        $bookcate = [];
         foreach ($this->_bookcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $bookcate[$k]['name'] = $v['name'];
                 $bookcate[$k]['list'] = M('book')->where(array('bookcate' => array('like', '%' . $k . '%')))->order('sort desc')->limit(6)->select();
-                $this->assign('bookcate', $bookcate);
             }
         }
+        $this->assign('bookcate', $bookcate);
         $this->assign('mf', M('book')->where(array('free_type' => 1))->order('sort desc')->select());
 
         $dd = new ddwechat();
