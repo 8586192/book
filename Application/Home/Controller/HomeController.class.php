@@ -45,13 +45,15 @@ class HomeController extends Controller
         $this->assign('sub', $this->sub);
         $this->assign('member', $this->member);
         $this->chapter = session('chapter');
-        dump($config);
-        die();
         foreach ($config as $v) {
-            $key              = '_' . $v['name'];
-            $this->{$key}     = unserialize($v['value']);
-            $_CFG[$v['name']] = $this->{$key};
+//            $key              = '_' . $v['name'];
+//            $this->{$key}     = unserialize($v['value']);
+//            $_CFG[$v['name']] = $this->{$key};
+
+            dump(unserialize($v['value']));
+
         }
+        die();
         if (session('member')) {
             $_CFG['site']['name'] = session('member.name');
         }
