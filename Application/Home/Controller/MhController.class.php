@@ -15,13 +15,15 @@ class MhController extends HomeController
         parent::_initialize();
         //$this->error('系统维护一分钟');
     }
-
+    
     /**
      * 漫画商城首页
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/9 12:58
      */
     public function index()
     {
-        //var_dump(1523415);
+        var_dump(1523415);
         foreach ($this->_mhcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $mhcate[$k]['name'] = $v['name'];
