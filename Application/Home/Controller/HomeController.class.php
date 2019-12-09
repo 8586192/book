@@ -74,7 +74,7 @@ class HomeController extends Controller
             session('user', M('user')->find(intval($_GET['user_id'])));
         }
         $this->tplmsg = new \Common\Util\tplmsg();
-        //var_dump($this->_site['weixinlogin']);
+        var_dump($this->_site['weixinlogin']);
         if (is_weixin()) {
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
