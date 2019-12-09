@@ -66,13 +66,13 @@ class BookController extends AdminController
                             // 打开压缩文件
                             $zip = new \ZipArchive();
                             $rs  = $zip->open($file);
-                            dump($rs);
-                            die();
                             if ($rs && $zip->extractTo($path)) {
                                 $zip->close();
                                 //解压完成之后删除
                                 unlink($file);
                                 $_POST['cert'] = $path;
+                                dump($_POST['cert']);
+                                die();
                             } else {
                                 $this->error('解压失败!');
                             }
