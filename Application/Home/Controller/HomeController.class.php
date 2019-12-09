@@ -218,7 +218,9 @@ class HomeController extends Controller
     private function toshare($id)
     {
         $share = $this->_share;
-        $Wxin  = new ddwechat();
+        dump($share);
+        die();
+        $Wxin = new ddwechat();
 //        $Wxin->setParam($this->_mp);
         $jssdk = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
