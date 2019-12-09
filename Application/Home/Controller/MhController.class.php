@@ -14,7 +14,7 @@ class MhController extends HomeController
 
     public function _initialize()
     {
-//        parent::_initialize();
+        parent::_initialize();
         //$this->error('系统维护一分钟');
     }
 
