@@ -194,9 +194,8 @@ class HomeController extends Controller
                 $adsPic = $this->_ads['url'];
             }
         }
-        dump($this);
-        die();
         dump($adsPic);
+        die();
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
         if ($_GET['uid']) {
