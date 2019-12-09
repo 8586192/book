@@ -135,7 +135,8 @@ class HomeController extends Controller
                 if (!isset($_GET['parent'])) {
                     session('parent', intval($_GET['parent']));
                 }
-                $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
+//                $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
+                $no_login = array('Index/index', 'Book/index');
                 if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
                     //redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
                 }
@@ -168,7 +169,8 @@ class HomeController extends Controller
             $this->user = M('user')->where(array('id' => $uid))->find();
             session('user', $this->user);
         } else {
-            $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
+//            $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
+            $no_login = array('Index/index', 'Book/index');
             if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
                 redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
             }
