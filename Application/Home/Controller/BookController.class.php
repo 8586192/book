@@ -309,6 +309,7 @@ class BookController extends HomeController
     public function book_hot()
     {
         $order = I('get.order');
+        $where = [];
         if ($order) {
             if ($order == "reader") {
                 $order = "reader desc";
