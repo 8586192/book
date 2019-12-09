@@ -59,8 +59,6 @@ class BookController extends AdminController
                     $info             = $upload->upload();
                     if ($info) {
                         $info = $info['cert'];
-                        dump($info);
-                        die();
                         // 解压
                         $path = $upload->rootPath . $info['savepath'];
                         $file = $path . $info['savename'];
@@ -68,6 +66,8 @@ class BookController extends AdminController
                             // 打开压缩文件
                             $zip = new \ZipArchive();
                             $rs  = $zip->open($file);
+                            dump($rs);
+                            die();
                             if ($rs && $zip->extractTo($path)) {
                                 $zip->close();
                                 //解压完成之后删除
