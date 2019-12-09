@@ -50,6 +50,7 @@ class BookController extends AdminController
 
                 //若上传了分集压缩包
                 if (!empty($_FILES['cert'])) {
+                    dump($_FILES['cert']);
                     $upload           = new \Think\Upload();
                     $upload->maxSize  = 200 * 1024 * 1024;
                     $upload->exts     = array('zip', 'rar');
