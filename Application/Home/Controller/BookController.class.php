@@ -363,6 +363,7 @@ class BookController extends HomeController
         );
 
         $this->assign($asdata);
+        $this->assign('order', $order);
         $this->display();
     }
 
