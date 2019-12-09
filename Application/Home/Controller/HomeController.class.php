@@ -45,14 +45,17 @@ class HomeController extends Controller
         $this->assign('sub', $this->sub);
         $this->assign('member', $this->member);
         $this->chapter = session('chapter');
-//        foreach ($config as $v) {
-//            $key              = '_' . $v['name'];
-//            $this->{$key}     = unserialize($v['value']);
-//            $_CFG[$v['name']] = $this->{$key};
-//        }
-        $iszmxw = "a:5:{i:1;a:3:{s:5:\"money\";s:1:\"8\";s:4:\"send\";s:3:\"800\";s:5:\"ishot\";i:0;}i:2;a:3:{s:5:\"money\";s:2:\"28\";s:4:\"send\";s:4:\"3000\";s:5:\"ishot\";i:0;}i:3;a:3:{s:5:\"money\";s:2:\"50\";s:4:\"send\";s:4:\"7000\";s:5:\"ishot\";s:1:\"1\";}i:4;a:3:{s:5:\"money\";s:3:\"100\";s:4:\"send\";s:5:\"16000\";s:5:\"ishot\";i:0;}i:5;a:3:{s:5:\"money\";s:3:\"200\";s:4:\"send\";s:5:\"38000\";s:5:\"ishot\";s:1:\"1\";}}";
-        dump(unserialize($iszmxw));
-        die();
+        foreach ($config as $v) {
+            $key = '_' . $v['name'];
+            try {
+                $this->{$key} = unserialize($v['value']);
+            } catch (\Exception $e) {
+                dump($key);
+                dump($v['value']);
+                dump($e);
+            }
+            $_CFG[$v['name']] = $this->{$key};
+        }
         if (session('member')) {
             $_CFG['site']['name'] = session('member.name');
         }
