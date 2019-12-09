@@ -33,4 +33,16 @@ if (!APP_DEBUG && !strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'micromesseng
     die('请通过微信访问');
 }
 define('APP_PATH', './Application/');
+
+
+// 使用composer自动加载器
+require './vendor/autoload.php';
+
+// 设置Whoops提供的错误和异常处理
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
+
 require './#ThinkPHP/ThinkPHP.php';
+
