@@ -25,8 +25,6 @@ class MhController extends HomeController
      */
     public function index()
     {
-        dump(1212);
-        die();
         foreach ($this->_mhcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $mhcate[$k]['name'] = $v['name'];
