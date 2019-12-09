@@ -165,11 +165,12 @@
         <volist name="chapter" id="vo">
             <?php
                 $money = M('book_episodes')->where(array('ji_no'=>$vo['ji_no'],'mhid'=>$info['id']))->getField('money');
-                if(!$money || $money<=0){
-                    $money = $_site['xsmoney'];
-                }
-                $money = intval($money);
-                $read = M('book_read')->where(array('ji_no'=>$vo['ji_no'],'mhid'=>$info['id'],'user_id'=>$user['id']))->find();
+            if(!$money || $money<=0){
+            $money = $_site['xsmoney'];
+            }
+            $money = intval($money);
+            $read =
+            M('book_read')->where(array('ji_no'=>$vo['ji_no'],'mhid'=>$info['id'],'user_id'=>$user['id']))->find();
             ?>
 
             <if condition="$vo egt $info['pay_num'] and $info['pay_num'] gt 0">
@@ -184,7 +185,8 @@
                 </if>
                 <else/>
                 <div class="item">
-                    <a href="{:U('Book/inforedit')}&bid={$info['id']}&ji_no={$vo['ji_no']}" class="" style="text-align:center;">{$vo['title']}章<span></span></a>
+                    <a href="{:U('Book/inforedit')}&bid={$info['id']}&ji_no={$vo['ji_no']}" class=""
+                       style="text-align:center;">{$vo['title']}章<span></span></a>
                 </div>
             </if>
         </volist>
