@@ -9,6 +9,7 @@ class BookController extends AdminController
     // 列表
     public function index()
     {
+        $where = [];
         if (isset($_POST['title'])) {
             $_GET['p']      = 1; //如果是post的话回到第一页
             $_GET['title']  = $_POST['title'];
