@@ -63,7 +63,7 @@ class HomeController extends Controller
         if (is_weixin()) {
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
-                @setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
+                setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
             } else {
                 //$_CFG['site']['weixinlogin']=0;
 
