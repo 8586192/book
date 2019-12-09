@@ -188,16 +188,14 @@ class HomeController extends Controller
             }
         }
         if ($showAds == 1) {
-            $adsPic = null;
             if ($this->_ads['pic']) {
                 $adsPic = $this->_ads['pic'];
-            }
-            if ($this->_ads['url']) {
+            } elseif ($this->_ads['url']) {
                 $adsPic = $this->_ads['url'];
             }
+        } else {
+            $adsPic = null;
         }
-        dump($adsPic);
-        die();
         // 广告信息
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
