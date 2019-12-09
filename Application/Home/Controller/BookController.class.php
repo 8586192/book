@@ -309,6 +309,7 @@ class BookController extends HomeController
     public function book_hot()
     {
         $order = I('get.order');
+        $this->assign('order', $order);
         $where = [];
         if ($order) {
             if ($order == "reader") {
@@ -363,7 +364,6 @@ class BookController extends HomeController
         );
 
         $this->assign($asdata);
-        $this->assign('order', $order);
         $this->display();
     }
 
