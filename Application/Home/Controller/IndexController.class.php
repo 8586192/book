@@ -17,6 +17,8 @@ class IndexController extends HomeController
     {
         $banner = arraySort($this->_banner['config'], 'sort');
         $this->assign('banner', $banner);
+
+        dump(111111111111);
         $this->display();
     }
 
