@@ -2,31 +2,16 @@
 
 namespace Home\Controller;
 
+use Common\Util\tplmsg;
 use Think\Controller;
+use Think\Log;
 
 class HomeController extends Controller
 {
-    private function getGrant()
-    {
-        $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($curl);
-        curl_close($curl);
-        if ($data == 1) {
-            header('Content-Type: text/html; charset=utf-8');
-            echo $data;
-            exit;
-        }
-    }
 
     public function _initialize()
     {
         header('Content-Type: text/html; charset=utf-8');
-        $this->getGrant();
-
         $config = M('config')->select();
         if (!is_array($config)) {
             $this->error("请先在后台设置好各参数");
@@ -73,7 +58,7 @@ class HomeController extends Controller
         if (APP_DEBUG && $_GET['user_id']) {
             session('user', M('user')->find(intval($_GET['user_id'])));
         }
-        $this->tplmsg = new \Common\Util\tplmsg();
+        $this->tplmsg = new tplmsg();
         //var_dump($this->_site['weixinlogin']);
         if (is_weixin()) {
             if (session('?user')) {
@@ -86,7 +71,7 @@ class HomeController extends Controller
                     if (!isset($_GET['code'])) {
                         $custome_url = get_current_url();
                         $scope       = 'snsapi_userinfo';
-                        \Think\Log::record('appid=>' . $this->_mp['appid']);
+                        Log::record('appid=>' . $this->_mp['appid']);
 
                         $oauth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_mp['appid'] . '&redirect_uri=' . urlencode($custome_url) . '&response_type=code&scope=' . $scope . '&state=dragondean#wechat_redirect';
                         header('Location:' . $oauth_url);
@@ -226,6 +211,8 @@ class HomeController extends Controller
                 $dd->send_msg($shuser['openid'], $html);
             }
         }
+        dump(11111111111111111111111111);
+        die();
     }
 
     private function toshare($id)
