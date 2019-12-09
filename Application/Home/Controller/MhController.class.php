@@ -21,6 +21,7 @@ class MhController extends HomeController
      */
     public function index()
     {
+        //var_dump(1523415);
         foreach ($this->_mhcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $mhcate[$k]['name'] = $v['name'];
@@ -290,8 +291,7 @@ class MhController extends HomeController
      */
     public function book_recent_read()
     {
-        $dis = M('read')->distinct(true)->field('rid,type')->where(array('user_id' => $this->user['id']))->order('create_time desc')->select();
-        //dump($dis);
+        $dis = M('read')->field('rid,type')->where(array('user_id' => $this->user['id']))->order('create_time desc')->select();
         foreach ($dis as $k => $v) {
             $list[] = M('read')->where(array('user_id' => $this->user['id'], 'rid' => $v['rid']))->order('episodes desc')->find();
         }
@@ -476,6 +476,9 @@ class MhController extends HomeController
                 if (!$money || $money <= 0) {
                     $money = $this->_site['mhmoney'];
                 }
+                if ($this->user['vip'] == 0 && $mhinfo['isvip'] == 2) {
+                    $this->error('抱歉，本漫画只允许vip用户阅读！', U('Mh/pay'));
+                }
                 if ($this->user['money'] < $money) {
                     $this->error('您的账户书币不足！', U('Mh/pay'));
                 }
@@ -531,6 +534,10 @@ class MhController extends HomeController
         $pics     = $jiinfo['pics'];
         if (!empty($pics)) {
             $arr_pics = explode(',', $pics);
+        }
+        $url = C('mh_config_url');
+        foreach ($arr_pics as $k => $v) {
+            $arr_pics[$k] = $url . $v;
         }
         //dump($arr_pics);exit;
 
@@ -785,11 +792,11 @@ class MhController extends HomeController
             $this->error('充值金额错误！');
         }
         $sn = $this->user['id'] . date('Ymdhis') . rand(10000, 99999);
-        //添加充值订单
+        // 添加充值订单
 
-        //需要减去扣除分成
+        // 需要减去扣除分成
         $separate = session('member.separate') * $money / 100;
-        //$desc = session('member.declv')*$money/100;
+        $desc     = session('member.declv') * $money / 100;
         $separate = $separate - $desc;
         $data     = array(
             'user_id'     => $this->user['id'],
@@ -807,11 +814,11 @@ class MhController extends HomeController
 
         $cid = M('charge')->add($data);
 
-        //添加分成记录
+        // 添加分成记录
         $data['id'] = $cid;
         $this->separate($data);
 
-        //若有第三方公司
+        // 若有第三方公司
         if (session('member')) {
             M('member_separate')->add(array(
                 'date'        => date('Ymd'),
@@ -877,7 +884,7 @@ class MhController extends HomeController
 
     public function paySend()
     {
-        //发送客服消息
+        // 发送客服消息
         $user_id = $this->user['id'];
         $shuser  = M('user')->find(intval($user_id));
         $dd      = new \Common\Util\ddwechat;
