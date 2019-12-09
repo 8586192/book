@@ -43,6 +43,15 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
+// 测试未捕获的异常
+division(10, 0);
+
 
 require './#ThinkPHP/ThinkPHP.php';
 
+function division($dividend, $divisor)
+{
+    if ($divisor == 0) {
+        throw new \Exception('Division by zero');
+    }
+}
