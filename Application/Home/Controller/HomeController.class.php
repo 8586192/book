@@ -128,6 +128,7 @@ class HomeController extends Controller
             $this->toshare($this->user[id]);
         } else {
             //如果是手机端
+            dump(1212);
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
                 setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
