@@ -47,6 +47,7 @@ class HomeController extends Controller
         $this->chapter = session('chapter');
         foreach ($config as $v) {
             $key = '_' . $v['name'];
+            dump($key);
             dump(unserialize($v['value']));
             die();
             $this->{$key}     = unserialize($v['value']);
