@@ -733,7 +733,7 @@ class MhController extends HomeController
         //查询是否签到
         $this->assign('sign', M('sign')->where(array('date' => date('Ymd'), 'user_id' => $this->user['id']))->find());
         $this->assign($asdata);
-        $this->assign($_CFG);
+        $this->assign('_CFG', $_CFG);
         $this->display();
     }
 
