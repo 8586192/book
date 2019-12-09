@@ -91,7 +91,7 @@ class BookController extends HomeController
             'lock'         => $lock,
         );
 
-        //猜你喜欢随机选择6个不为自己ID
+        // 猜你喜欢随机选择6个不为自己ID
         $guess = M('book')->where(array('id' => array('neq', $bid)))->order('rand()')->limit(6)->select();
         $this->assign('guess', $guess);
 
