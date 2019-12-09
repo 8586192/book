@@ -16,9 +16,11 @@ class BookController extends AdminController
         }
         $order = "sort desc";
         // 组合排序方式
-        if (in_array($_GET['order'], array('id', 'readnum', 'chargenum', 'chargemoney'))) {
-            $type  = $_GET['type'] == 'asc' ? 'asc' : 'desc';
-            $order = $_GET['order'] . ' ' . $type;
+        if (isset($_GET['order'])) {
+            if (in_array($_GET['order'], array('id', 'readnum', 'chargenum', 'chargemoney'))) {
+                $type  = $_GET['type'] == 'asc' ? 'asc' : 'desc';
+                $order = $_GET['order'] . ' ' . $type;
+            }
         }
         $this->_list('book', $where, $order);
     }
