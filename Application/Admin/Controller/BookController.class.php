@@ -129,9 +129,12 @@ class BookController extends AdminController
                     $before = $i - 1;
                     $next   = $i + 1;
                     $title  = trim(substr($v, 0, -4));
-                    var_dump(iconv('GBK', 'UTF-8', $v));die();
+                    // var_dump(iconv('GBK','UTF-8',$v));
                     $str   = iconv('GBK', 'UTF-8', $str);
                     $title = iconv('GBK', 'UTF-8', $title);
+                    dump($str);
+                    dump($title);
+                    die();
 
                     $ds = array(
                         "bid"         => $bid,
