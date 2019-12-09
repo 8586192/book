@@ -211,8 +211,6 @@ class HomeController extends Controller
                 $dd->send_msg($shuser['openid'], $html);
             }
         }
-        dump(1111111);
-        die();
     }
 
     private function toshare($id)
