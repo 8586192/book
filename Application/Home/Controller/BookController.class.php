@@ -55,7 +55,7 @@ class BookController extends HomeController
 
         $info = M('book')->where("id={$bid}")->find();
         if (empty($info)) {
-            $this->error('漫画数据缺失！', U('Book/index'));
+            $this->error('数据缺失！', U('Book/index'));
         }
         M('book')->where("id={$bid}")->setInc('reader', 1);
 

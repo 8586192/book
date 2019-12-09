@@ -366,7 +366,7 @@ class MhController extends HomeController
 
         $info = M('mh_list')->where("id={$mhid}")->find();
         if (empty($info)) {
-            $this->error('漫画数据缺失！', U('Mh/index'));
+            $this->error('数据缺失！', U('Mh/index'));
         }
         M('mh_list')->where("id={$mhid}")->setInc('reader', 1);
 
@@ -521,7 +521,7 @@ class MhController extends HomeController
 
         $jiinfo = M('mh_episodes')->where("mhid={$mhid} and ji_no={$ji_no}")->find();
         if (empty($jiinfo) || empty($mhinfo)) {
-            $this->error('漫画数据缺失！', U('Mh/bookinfo') . "&mhid={$mhid}");
+            $this->error('数据缺失！', U('Mh/bookinfo') . "&mhid={$mhid}");
         }
 
         $likes   = M('mh_likes')->where("mhid={$mhid} and ji_no={$ji_no} and user_id=" . $this->user['id'])->find();
