@@ -40,8 +40,11 @@ class BookController extends HomeController
         $this->display();
     }
 
+
     /**
-     * 作品简介
+     * 作品简介，小说描述详情页面
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/9 12:30
      */
     public function bookinfo()
     {
@@ -79,7 +82,8 @@ class BookController extends HomeController
         }
         $first = M('book_episodes')->where("bid={$bid}")->order('ji_no asc')->find();
 
-        $huas = M('book_episodes')->where(array('bid' => $bid))->count();
+        $huas    = M('book_episodes')->where(array('bid' => $bid))->count();
+        $chapter = M('book_episodes')->field('ji_no,title')->where(array('bid' => $bid))->select();
         if ($huas > 15) {
             $huas_num = range(1, 15);
         } else {
@@ -91,6 +95,7 @@ class BookController extends HomeController
             'arr_catename' => $arr_catename,
             'first'        => $first,
             'huas'         => $huas_num,
+            'chapter'      => $chapter,
             'tag'          => $tag,
             'lock'         => $lock,
         );
