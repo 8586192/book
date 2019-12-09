@@ -16,7 +16,7 @@ class HomeController extends Controller
         if (!is_array($config)) {
             $this->error("请先在后台设置好各参数");
         }
-        if ($_GET['imei']) {
+        if (isset($_GET['imei'])) {
             $member = M('member')->where(array('imei' => $_GET['imei']))->find();
             if ($member) {
                 $imei = xmd5($member['salt']);
