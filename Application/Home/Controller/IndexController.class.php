@@ -2,8 +2,6 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
-
 class IndexController extends HomeController
 {
     public function _initialize()
@@ -15,8 +13,6 @@ class IndexController extends HomeController
     // 商城首页
     public function index()
     {
-        dump(2222222);
-        die();
         $banner = arraySort($this->_banner['config'], 'sort');
         $this->assign('banner', $banner);
         $this->display();
