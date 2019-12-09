@@ -28,7 +28,7 @@ class MhController extends HomeController
         foreach ($this->_mhcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $mhcate[$k]['name'] = $v['name'];
-                $mhcate[$k]['sort'] = $v['sort'];
+//                $mhcate[$k]['sort'] = $v['sort'];
                 $mhcate[$k]['list'] = M('mh_list')->where(array('mhcate' => array('like', '%' . $k . '%')))->order('sort desc')->limit(6)->select();
             }
         }
