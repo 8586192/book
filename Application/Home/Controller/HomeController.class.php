@@ -111,7 +111,6 @@ class HomeController extends Controller
                     setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
                 }
             }
-            $this->toshare($this->user['id']);
         } else {
             //如果是手机端
             if (session('?user')) {
@@ -127,6 +126,9 @@ class HomeController extends Controller
                 }
             }
         }
+        // 页面分享参数
+        $this->toshare($this->user['id']);
+
         if (!$this->user) {
             $uloginid = $_COOKIE['uloginid'];
             if ($uloginid) {
