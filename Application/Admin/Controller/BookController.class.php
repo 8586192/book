@@ -119,10 +119,10 @@ class BookController extends AdminController
                         $temp[] = $fp;
                     }
                 }
-                dump($temp);die();
                 closedir($handle);
                 sort($temp, SORT_NUMERIC);
                 reset($temp);
+                dump($temp);die();
                 foreach ($temp as $v) {
                     $str = file_get_contents($path . $v);
 
