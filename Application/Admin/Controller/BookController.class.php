@@ -10,10 +10,9 @@ class BookController extends AdminController
     public function index()
     {
         $where = [];
-        $title = null;
         if (isset($_POST['title'])) {
             $_GET['p']      = 1; //如果是post的话回到第一页
-            $title          = $_POST['title'];
+            $_GET['title']  = $_POST['title'];
             $where['title'] = array('like', '%' . $_POST['title'] . '%');
         }
         $order = "sort desc";
@@ -24,7 +23,6 @@ class BookController extends AdminController
                 $order = $_GET['order'] . ' ' . $type;
             }
         }
-        $this->assign('title', $title);
         $this->_list('book', $where, $order);
     }
 
