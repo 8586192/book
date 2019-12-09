@@ -187,19 +187,18 @@ class HomeController extends Controller
                 }
             }
         }
+        $adsPic = null;
         if ($showAds == 1) {
             if ($this->_ads['pic']) {
                 $adsPic = $this->_ads['pic'];
             } elseif ($this->_ads['url']) {
                 $adsPic = $this->_ads['url'];
             }
-        } else {
-            $adsPic = null;
         }
         // 广告信息
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
-        if ($_GET['uid']) {
+        if (isset($_GET['uid'])) {
             $user_id = decode($_GET['uid']);
             $shuser  = M('user')->find(intval($user_id));
             $log     = M('slog')->where(array('self_id' => $this->user['id'], 'date' => date('Y-m-d'), 'user_id' => $shuser['id']))->find();
