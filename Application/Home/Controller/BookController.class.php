@@ -2,8 +2,6 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
-
 /**
  * 小说控制器
  * Class BookController
