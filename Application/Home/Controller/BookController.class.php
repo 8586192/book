@@ -2,6 +2,8 @@
 
 namespace Home\Controller;
 
+use Common\Util\ddwechat;
+
 /**
  * 小说控制器
  * Class BookController
@@ -25,12 +27,12 @@ class BookController extends HomeController
             if ($v['show'] == 2 && $v['isshow']) {
                 $bookcate[$k]['name'] = $v['name'];
                 $bookcate[$k]['list'] = M('book')->where(array('bookcate' => array('like', '%' . $k . '%')))->order('sort desc')->limit(6)->select();
+                $this->assign('bookcate', $bookcate);
             }
         }
-        $this->assign('bookcate', $bookcate);
         $this->assign('mf', M('book')->where(array('free_type' => 1))->order('sort desc')->select());
 
-        $dd = new \Common\Util\ddwechat();
+        $dd = new ddwechat();
 //        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
