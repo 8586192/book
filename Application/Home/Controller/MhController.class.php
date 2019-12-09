@@ -2,10 +2,12 @@
 
 namespace Home\Controller;
 
-use Think\Controller;
+use Common\Util\ddwechat;
 
 /**
  * 漫画控制器
+ * Class MhController
+ * @package Home\Controller
  */
 class MhController extends HomeController
 {
@@ -15,7 +17,7 @@ class MhController extends HomeController
         parent::_initialize();
         //$this->error('系统维护一分钟');
     }
-    
+
     /**
      * 漫画商城首页
      * @author：iszmxw <mail@54zm.com>
@@ -23,7 +25,6 @@ class MhController extends HomeController
      */
     public function index()
     {
-        var_dump(1523415);
         foreach ($this->_mhcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $mhcate[$k]['name'] = $v['name'];
@@ -35,7 +36,7 @@ class MhController extends HomeController
         $this->assign('mf', M('mh_list')->where(array('free_type' => 1))->order('sort desc')->select());
 
 
-        $dd = new \Common\Util\ddwechat();
+        $dd = new ddwechat();
 //        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
