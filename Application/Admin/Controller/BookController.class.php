@@ -124,8 +124,7 @@ class BookController extends AdminController
                 reset($temp);
                 foreach ($temp as $v) {
                     $str = file_get_contents($path . $v);
-
-                    dump($temp);
+                    dump($str);
                     die();
                     $str = "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $str;
 
