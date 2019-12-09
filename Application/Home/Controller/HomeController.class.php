@@ -46,14 +46,8 @@ class HomeController extends Controller
         $this->assign('member', $this->member);
         $this->chapter = session('chapter');
         foreach ($config as $v) {
-            $key = '_' . $v['name'];
-            try {
-                $this->{$key} = unserialize($v['value']);
-            } catch (\Exception $e) {
-                dump($key);
-                dump($v['value']);
-                dump($e);
-            }
+            $key              = '_' . $v['name'];
+            $this->{$key}     = @unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
         if (session('member')) {
