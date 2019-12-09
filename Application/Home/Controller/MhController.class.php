@@ -727,6 +727,12 @@ class MhController extends HomeController
         $asdata = array(
             'user' => $user,
         );
+        $config = M('config')->select();
+        foreach ($config as $v) {
+            $key              = '_' . $v['name'];
+            $this->{$key}     = unserialize($v['value']);
+            $_CFG[$v['name']] = $this->{$key};
+        }
 
         $_CFG['site']['gonggao'] = "小窝小说站正式免费对外开放了！";
 
