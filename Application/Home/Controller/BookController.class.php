@@ -23,7 +23,7 @@ class BookController extends HomeController
      */
     public function index()
     {
-        $bookcate = [];
+        $bookcate = array();
         foreach ($this->_bookcate as $k => $v) {
             if ($v['show'] == 2 && $v['isshow']) {
                 $bookcate[$k]['name'] = $v['name'];
@@ -37,6 +37,8 @@ class BookController extends HomeController
 //        $dd->setParam($this->_mp);
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
+        dump($jssdk);
+        die();
         $this->display();
     }
 
