@@ -139,7 +139,7 @@ class HomeController extends Controller
         $this->toshare($this->user['id']);
 
         if (!$this->user) {
-            $uloginid = $_COOKIE['uloginid'];
+            $uloginid = isset($_COOKIE['uloginid']) ? $_COOKIE['uloginid'];
             if ($uloginid) {
                 $uid        = substr($uloginid, 3);
                 $this->user = M('user')->find($uid);
