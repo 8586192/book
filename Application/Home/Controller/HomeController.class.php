@@ -165,9 +165,11 @@ class HomeController extends Controller
             $this->user = M('user')->where(array('id' => $uid))->find();
             session('user', $this->user);
         } else {
-            $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
-            if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
-                redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
+            if (isset($_GET['parent'])) {
+                $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
+                if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
+                    redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
+                }
             }
         }
         $this->assign('user', $this->user);
