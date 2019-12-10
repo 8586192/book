@@ -9,6 +9,15 @@ use Think\Log;
 
 class HomeController extends Controller
 {
+    protected $user;
+    protected $member;
+    protected $sub;
+    protected $chapter;
+    protected $tplmsg;
+    protected $_mp;
+    protected $openid;
+    protected $_site;
+    protected $_ads;
 
     public function _initialize()
     {
