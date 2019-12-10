@@ -33,4 +33,4 @@ define('DIR_SECURE_CONTENT', 'powered by http://blog.54zm.com');
 define('APP_DEBUG', true);
 
 define('APP_PATH','./Application/');
-require './#ThinkPHP/ThinkPHP.php';
+require './ThinkPHP/ThinkPHP.php';

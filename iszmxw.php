@@ -35,4 +35,4 @@ define('APP_PATH', './Application/');
 require './vendor/autoload.php';
 
 
-require './#ThinkPHP/ThinkPHP.php';
+require './ThinkPHP/ThinkPHP.php';
