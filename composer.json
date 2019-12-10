@@ -17,8 +17,9 @@
   ],
   "require": {
     "php": ">=5.3.0",
-    "filp/whoops": "^2.2@dev",
-    "jaeger/querylist": "dev-master"
+    "jaeger/querylist": "^4.1"
   },
-  "minimum-stability": "dev"
+  "require-dev": {
+    "filp/whoops": "^2.0"
+  }
 }
