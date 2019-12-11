@@ -3,12 +3,11 @@
 namespace Admin\Controller;
 
 use Think\Controller;
-
 class AdminController extends Controller
 {
     private function getGrant()
     {
-        $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
+        $url = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HEADER, 0);
@@ -21,7 +20,6 @@ class AdminController extends Controller
             exit;
         }
     }
-
     public function _initialize()
     {
         $this->getGrant();
@@ -34,26 +32,23 @@ class AdminController extends Controller
         }
         $config = M('config')->select();
         foreach ($config as $v) {
-            $key              = '_' . $v['name'];
-            $this->{$key}     = @unserialize($v['value']);
+            $key = '_' . $v['name'];
+            $this->{$key} = unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
         $this->assign('murl', "http://" . $_SERVER['HTTP_HOST'] . __ROOT__ . "/index.php?m=");
     }
-
     public function welcome()
     {
-        $info = [];
         $this->assign('info', $info);
         $this->display();
     }
-
     public function set_col($table = null)
     {
-        $id    = intval($_REQUEST['id']);
-        $col   = $_REQUEST['col'];
+        $id = intval($_REQUEST['id']);
+        $col = $_REQUEST['col'];
         $value = $_REQUEST['value'];
         if (!$table) {
             $table = CONTROLLER_NAME;
@@ -61,7 +56,6 @@ class AdminController extends Controller
         M($table)->where('id=' . $id)->setField($col, $value);
         $this->success('操作成功', $_SERVER['HTTP_REFERER']);
     }
-
     protected function _list($table, $where = null, $order = null)
     {
         $list = $this->_get_list($table, $where, $order);
@@ -69,24 +63,22 @@ class AdminController extends Controller
         $this->assign('page', $this->data['page']);
         $this->display();
     }
-
     protected function _get_list($table, $where = null, $order = null)
     {
         $model = M($table);
         $count = $model->where($where)->count();
-        $page  = new \Think\Page($count, 25);
+        $page = new \Think\Page($count, 25);
         if (!$order) {
             $order = "id desc";
         }
-        $list       = $model->where($where)->limit($page->firstRow . ',' . $page->listRows)->order($order)->select();
+        $list = $model->where($where)->limit($page->firstRow . ',' . $page->listRows)->order($order)->select();
         $this->data = array('list' => $list, 'page' => $page->show(), 'count' => $count);
         return $list;
     }
-
     protected function _edit($table, $url = null)
     {
         $model = M($table);
-        $id    = intval($_GET['id']);
+        $id = intval($_GET['id']);
         if ($id > 0) {
             $info = $model->find($id);
             if (!$info) {
@@ -111,14 +103,12 @@ class AdminController extends Controller
         }
         $this->display();
     }
-
     protected function _del($table, $id)
     {
         if ($id > 0 && !empty($table)) {
             M($table)->delete($id);
         }
     }
-
     public function upload()
     {
         if (!empty($_GET['url'])) {
@@ -149,12 +139,10 @@ class AdminController extends Controller
         C('LAYOUT_ON', false);
         $this->display('Admin/upload');
     }
-
     private function _get_ext($file_name)
     {
         return substr(strtolower(strrchr($file_name, '.')), 1);
     }
-
     private function _get_new_name($ext, $dir = 'default')
     {
         $name = date('His') . substr(microtime(), 2, 8) . rand(1000, 9999) . '.' . $ext;
@@ -164,13 +152,12 @@ class AdminController extends Controller
         }
         return array('name' => $name, 'fullname' => $path . $name);
     }
-
     public function setField()
     {
-        $id     = I('get.id');
-        $table  = I('get.table');
-        $field  = I('get.field');
-        $info   = M($table)->find(intval($id));
+        $id = I('get.id');
+        $table = I('get.table');
+        $field = I('get.field');
+        $info = M($table)->find(intval($id));
         $status = $info[$field] ? 0 : 1;
         M($table)->where(array("id" => $id))->save(array($field => intval($status)));
         $this->success('操作成功！');
