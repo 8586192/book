@@ -16,7 +16,7 @@ return array(
     /* 核心语言变量 */
     '_MODULE_NOT_EXIST_'     => '无法加载模块',
     '_CONTROLLER_NOT_EXIST_' => '无法加载控制器',
-    '_ERROR_ACTION_'         => '非法操作啊飒飒',
+    '_ERROR_ACTION_'         => '非法操作',
     '_LANGUAGE_NOT_LOAD_'    => '无法加载语言包',
     '_TEMPLATE_NOT_EXIST_'   => '模板不存在',
     '_MODULE_'               => '模块',
