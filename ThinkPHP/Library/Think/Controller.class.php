@@ -180,7 +180,11 @@ abstract class Controller
                 // 检查是否存在默认模版 如果有直接输出模版
                 $this->display();
             } else {
-                E(L('_ERROR_ACTION_') . ':' . ACTION_NAME);
+                try {
+                    E(L('_ERROR_ACTION_') . ':' . ACTION_NAME);
+                } catch (\Exception $e) {
+                    dump($e);
+                }
             }
         } else {
             E(__CLASS__ . ':' . $method . L('_METHOD_NOT_EXIST_'));
