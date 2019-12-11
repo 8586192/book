@@ -1,23 +1,20 @@
 <?php
 
 namespace Common\Tag;
-
 use Think\Template\TagLib;
 
-class My extends TagLib
-{
+class My extends TagLib {
     // 定义标签
-    protected $tags = array(
-        'jquery'         => array('attr' => '', 'close' => 0),
-        'webuploadercss' => array('attr' => '', 'close' => 0),
-        'webuploader'    => array('attr' => 'name,url,word', 'close' => 0),
-        'webuploaderjs'  => array('attr' => '', 'close' => 0),
+    protected $tags=array(
+        'jquery'=>array('attr'=>'','close'=>0),
+        'webuploadercss'=>array('attr'=>'','close'=>0),
+        'webuploader'=>array('attr'=>'name,url,word','close'=>0),
+        'webuploaderjs'=>array('attr'=>'','close'=>0),
     );
 
     // webuploader的css部分和jquery因为插件需要引在jquery后边；所以在头部引入了jquery
-    public function _webuploadercss()
-    {
-        $str = <<<php
+    public function _webuploadercss(){
+        $str=<<<php
 <link rel="stylesheet" href="__PUBLIC__/webuploader-0.1.5/xb-webuploader.css">
 <style>
 * {
@@ -34,9 +31,8 @@ php;
     }
 
     // webuploader的js部分
-    public function _webuploaderjs()
-    {
-        $str = <<<php
+    public function _webuploaderjs(){
+        $str=<<<php
 <script>
     var BASE_URL = '__PUBLIC__/webuploader-0.1.5';
 </script>
@@ -47,18 +43,17 @@ php;
 
     /**
      * 上传标签
-     * @param string $tag
-     * url：上传的图片处理的控制器方法
-     * name：表单name
+     * @param string $tag  
+     * url：上传的图片处理的控制器方法   
+     * name：表单name   
      * word：提示文字
      */
-    public function _webuploader($tag)
-    {
-        $url     = isset($tag['url']) ? $tag['url'] : U('Admin/Admin/ajax_upload');
-        $name    = isset($tag['name']) ? $tag['name'] : 'file_name';
-        $word    = isset($tag['word']) ? $tag['word'] : '或将照片拖到这里，单次最多可选300张';
-        $id_name = 'upload-' . uniqid();
-        $str     = <<<php
+    public function _webuploader($tag){
+        $url=isset($tag['url'])?$tag['url']:U('Admin/Admin/ajax_upload');
+        $name=isset($tag['name'])?$tag['name']:'file_name';
+        $word=isset($tag['word'])?$tag['word']:'或将照片拖到这里，单次最多可选300张';
+        $id_name='upload-'.uniqid();
+            $str=<<<php
 <div id="$id_name" class="xb-uploader uploader-list-container" style="width:768px;">
     <div class="queueList">
         <div class="placeholder">
@@ -539,6 +534,7 @@ jQuery(function() {
 php;
         return $str;
     }
+
 
 
 }

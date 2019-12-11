@@ -1,4 +1,4 @@
 <?php
-return array(
-    'VERSION' => '160126',
+ return array (
+  'VERSION' => '160126',
 );

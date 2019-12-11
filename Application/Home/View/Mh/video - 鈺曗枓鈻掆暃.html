@@ -98,7 +98,7 @@
 <a class="toback tobackbg-new" href="{:U('Mh/index')}"></a>
 <!-- 漫画最近更新 -->
 <div class="br-box rank-view clearfix">
-    <div class="tl"><i class="wbg"></i></div>
+    <div class="tl"><!-- <i class="wbg"></i> --></div>
     <div class="list clearfix" id="html_box" style="min-height: 748px;">
         <!-- <div class="item clearfix"><a href="https://m.efucms.com/book/10231/" class="clearfix">
             <div class="cover"><img width="75" height="100" class=""
@@ -122,11 +122,11 @@
         </a></div> -->
         <volist name="list" id="vo">
         <div class="item clearfix">
-        <a href="{:U('Mh/bookinfo')}&mhid={$vo.id}" class="clearfix">
-            <div class="cover">
-            	<img width="75" height="100" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}" style="background: rgb(238, 238, 238); display: block;">
+        <a href="{:U('Mh/videoinfo')}&id={$vo.id}" class="clearfix">
+            <div class="cover" style="height:75px;width:50%; margin-left: -95px;">
+            	<img style="width:100%;height:75px;" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}" style="background: rgb(238, 238, 238); display: block;">
             </div>
-            <div class="body">
+            <div class="body" style="margin-left:30px;">
                 <div class="title">{$vo.title}</div>
                 <div class="col">
                     <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -138,7 +138,7 @@
                 <div class="col">
                 {$vo.arr_catename}
                 </div>
-                <div class="col">更新至：第{$vo.episodes}话 <!-- 跟我有一腿的，是你 --></div>
+                <div class="col"> <!-- 跟我有一腿的，是你 --></div>
             </div>
         </a>
         </div>
