@@ -1167,7 +1167,7 @@ function F($name, $value = '', $path = DATA_PATH)
         if (is_null($value)) {
             // 删除缓存
             if (false !== strpos($name, '*')) {
-                return false; // TODO 
+                return false; // TODO
             } else {
                 unset($_cache[$name]);
                 return Think\Storage::unlink($filename, 'F');
