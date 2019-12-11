@@ -2,16 +2,13 @@
 
 namespace Admin\Controller;
 
-use Think\Controller;
 
 class IndexController extends AdminController
 {
     public function index()
     {
         // 入口，已登录调到首页，未登录跳转到登陆
-
         if (session('?admin'))
-
             redirect(U('Admin/welcome'));
         else
             redirect(U('Index/login'));
